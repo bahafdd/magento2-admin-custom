@@ -1,0 +1,34 @@
+<?php
+// Retrieve custom module configurations from the block
+$backgroundImageUrl = $block->getBackgroundImageUrl();  // Get background image URL
+$customCss = $block->getCustomCss();  // Get custom CSS
+$isModuleEnabled = $block->isModuleEnabled(); // Check if the custom login module is enabled
+$logoUrl = $block->getLogoUrl(); // Get custom logo URL
+?>
+
+<a href="<?= $block->getHomePageUrl() ?>" class="logo">
+    <?php if ($isModuleEnabled && $logoUrl): ?>
+        <!-- Show custom logo if the module is enabled and logo is set -->
+        <img src="<?= $logoUrl ?>" alt="<?= $block->escapeHtml(__('Admin Logo')) ?>" />
+    <?php else: ?>
+        <!-- Fallback to default Magento logo if the module is disabled or logo is not set -->
+        <img src="<?= $block->getViewFileUrl('Themestar_LoginCustom::images/magento.png') ?>" alt="<?= $block->escapeHtml(__('Admin Logo')) ?>" />
+    <?php endif; ?>
+</a>
+
+<style>
+    /* Apply background image to the admin login page */
+    <?php if ($isModuleEnabled && $backgroundImageUrl): ?>
+    .page-layout-admin-login {
+        background-image: url('<?= $block->escapeUrl($backgroundImageUrl) ?>');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    <?php endif; ?>
+
+    /* Apply custom CSS for the admin login page */
+    <?php if ($isModuleEnabled && $customCss): ?>
+    <?= $customCss ?>
+    <?php endif; ?>
+</style>

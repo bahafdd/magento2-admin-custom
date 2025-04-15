@@ -1,0 +1,21 @@
+<?php
+// Check if the module is enabled
+$isModuleEnabled = $block->isModuleEnabled();
+
+// Get the custom copyright text
+$customCopyright = $block->getCopyrightText();
+
+// Strip HTML tags from the custom copyright text
+$customCopyright = strip_tags($customCopyright);
+?>
+
+<a class="link-copyright" href="http://magento.com" target="_blank" title="<?= $block->escapeHtmlAttr(__('Magento')) ?>"></a>
+
+<?php if ($isModuleEnabled && $customCopyright): ?>
+    <!-- Display custom copyright if module is enabled -->
+    <?= $customCopyright ?>
+<?php else: ?>
+    <!-- Display default Magento copyright if module is not enabled -->
+    <?= $block->escapeHtml(__('Copyright &copy; %1 Magento Commerce Inc. All rights reserved.', date('Y'))) ?>
+<?php endif; ?>
+

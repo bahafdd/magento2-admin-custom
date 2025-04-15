@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    <referenceContainer name="header">
+            <block class="Themestar\LoginCustom\Block\Header" name="logo" as="logo" template="Themestar_LoginCustom::page/header.phtml"/>
+        </referenceContainer>
+         <referenceContainer name="footer">
+            <container name="legal" htmlTag="div" htmlClass="footer-legal">
+                <container name="legal.copyright" htmlTag="p" htmlClass="copyright col-m-6">
+                    <block class="Themestar\LoginCustom\Block\Copyright" name="copyright" as="copyright" template="Themestar_LoginCustom::page/copyright.phtml"/>
+                </container>
+                <container name="legal.system" htmlTag="div" htmlClass="footer-legal-system col-m-6">
+                    <block class="Magento\Backend\Block\Page\Footer" name="version" as="version" />
+                    <block class="Magento\Framework\View\Element\Template" name="privacyPolicy" as="privacyPolicy" template="Magento_Backend::page/privacyPolicy.phtml">
+                        <arguments>
+                            <argument name="privacypolicy_url" xsi:type="string">https://www.adobe.com/privacy/policy.html</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Template" name="report" as="report" template="Magento_Backend::page/report.phtml">
+                        <arguments>
+                            <argument name="bugreport_url" xsi:type="string">https://github.com/magento/magento2/issues</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/system_file.xsd">
+    <system>
+        <tab id="themestar" translate="label" sortOrder="100">
+            <label>Themestar</label>
+        </tab>
+        <section id="logincustom" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Login Customization</label>
+            <tab>themestar</tab>
+            <resource>Themestar_LoginCustom::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+
+                <!-- Enable/Disable Module Field -->
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!-- Updated Logo Upload Field with Base URL -->
+                <field id="logo" translate="label" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Upload Logo</label>
+                    <backend_model>Themestar\LoginCustom\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">logincustom/logo</upload_dir>
+                    <base_url type="media">logincustom/logo/</base_url>
+                </field>
+                
+        		<field id="background_image" translate="label" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        		    <label>Upload Background Image</label>
+        		    <backend_model>Themestar\LoginCustom\Model\Config\Backend\Background</backend_model>
+        		    <upload_dir config="system/filesystem/media" scope_info="1">logincustom/background</upload_dir>
+        		    <base_url type="media">logincustom/background/</base_url>
+        		</field>
+
+                <!-- Custom Copyright Text Field -->
+                <field id="copyright" translate="label" type="editor" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Copyright Text</label>
+                    <frontend_model>Themestar\LoginCustom\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+                
+                 <!-- Custom CSS Textarea Field -->
+                <field id="custom_css" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom CSS for Admin Login</label>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
+
